@@ -118,3 +118,6 @@
   (int (inc (/ (c-int char) 2))))
 
 (spell-slots character)
+
+(def spell-slot-comps (comp int inc #(/ % 2) c-int))
+(spell-slot-comps character)
