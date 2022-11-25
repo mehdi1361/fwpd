@@ -112,6 +112,7 @@
 (def c-dex (comp :dexterity :attributes))
 
 (c-int character)
+(c-str character)
 
 (defn spell-slots
   [char]
@@ -121,3 +122,13 @@
 
 (def spell-slot-comps (comp int inc #(/ % 2) c-int))
 (spell-slot-comps character)
+
+(defn sleepy-identity
+  [x]
+  (Thread/sleep 10000)
+  x)
+
+(sleepy-identity "mehdi mousavi")
+
+(def memo-sleep-identity (memoize sleepy-identity))
+(memo-sleep-identity "mehdi mousavi")
